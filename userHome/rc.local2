@@ -1,0 +1,23 @@
+
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Add some error logging, you can disable it after when you are certain everything is working:
+exec 2> /tmp/rc.local.log
+exec 1>&2
+set -x
+
+# Enabling persistence mode makes sure that the driver doesn't get unloaded.
+sudo nvidia-smi -pm ENABLED
+
+exit 0
